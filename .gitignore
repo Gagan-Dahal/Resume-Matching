@@ -3,6 +3,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 dataset/
+venv/
+*.json
+kwds.txt
+test.txt
 # C extensions
 *.so
 
