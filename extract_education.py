@@ -3,7 +3,7 @@ import json
 
 level_capture = r"""(?:
     b\.?[ \t]?(?:sc|tech|e|s)|
-    bachelor[s]?|
+    bachelor(?:s|'s)?|
     m\.?[ \t]?(?:sc|tech|e|s|ba)|
     master[s]?|
     p\.?[ \t]?h\.?[ \t]?d|
