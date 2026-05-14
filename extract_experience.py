@@ -105,11 +105,11 @@ def extract_experience(experience_text):
         return calculate_experience(finds)
 
 
-with open("test.json", "r") as fp:
+with open("demo.json", "r") as fp:
     sectioned_database = json.load(fp)
 
 demo_text = sectioned_database["experience"]
-print(demo_text)
+# print(demo_text)
 print(extract_experience(demo_text))
 
 

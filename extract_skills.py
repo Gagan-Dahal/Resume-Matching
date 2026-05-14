@@ -24,7 +24,7 @@ def get_skills_and_type(skills_text:str)->list:
     
     return skills
 
-with open("test.json", "r") as fp:
+with open("demo.json", "r") as fp:
     sectioned_database = json.load(fp)
 
 demo_text = sectioned_database["skills"]

@@ -2,6 +2,7 @@ import fitz
 import pytesseract
 from PIL import Image
 import io
+import re
 
 def extract_text_from_pdf(pdf_path):
     doc = fitz.open(pdf_path)
@@ -22,7 +23,7 @@ def extract_text_from_pdf(pdf_path):
     return "\n".join(full_text)
 
 
-text = extract_text_from_pdf("11.pdf")
+text = extract_text_from_pdf("11.pdf").replace("\u2013", "-").replace("\u2014", "-")
 
 with open("test.txt", "w") as fp:
     fp.write(text)

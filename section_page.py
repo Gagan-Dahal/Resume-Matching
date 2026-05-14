@@ -6,14 +6,12 @@ SECTION_HEADERS = {
     "skills": ["skills", "technical skills", "core competencies"],
     "education": ["education", "educational qualification", "qualification", "academic background", "education and training"],
     "certifications": ["certifications", "certificates", "licenses", "training"],
-    "experience": ["experience", "work experience", "professional experience", "employment history"],
+    "experience": ["experience", "work experience", "professional experience", "employment history", "work history"],
     "projects": ["projects", "academic projects", "side projects"],
 }
 headers = [val for sublist in SECTION_HEADERS.values() for val in sublist]
 
 section_regex = re.compile(r"^\s*(" + "|".join(headers) + r")\s*:?\s*$", re.IGNORECASE|re.MULTILINE)
-
-# test_text = "Hello this is Gagan Dahal\nWork Experience\nlasjdfla\nIntroduction\n- Worked as abcde\n- ABCDE\nSKILLS\nPython, Anaconda, King Cobra\nQualification: \nBachelors in Computer Engineering\nTrubhuwan University, Nepal\nMasters in Data Science\nHarvard University, USA"
 
 test_text = ""
 

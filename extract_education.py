@@ -26,7 +26,12 @@ def get_education(education_text:str)->list:
         qualifications.append(match.group(0))
     return qualifications
 
-test_text = "Bachelors in Computer Engineering, 2018, Masters in Data Science, 2021, PHD. in Cyberbio Engineering for Simulation of Human Neural Network\nBachelors in Business Studies, mba, b.tech in biomechanical engineering\nbachelors, data science\np.h.d., memory systems\nB.S & Masters: Computer Applications"
+# test_text = "Bachelors in Computer Engineering, 2018, Masters in Data Science, 2021, PHD. in Cyberbio Engineering for Simulation of Human Neural Network\nBachelors in Business Studies, mba, b.tech in biomechanical engineering\nbachelors, data science\np.h.d., memory systems\nB.S & Masters: Computer Applications"
+
+with open("demo.json", "r") as fp:
+    sectioned_database = json.load(fp)
+
+test_text = sectioned_database["education"]
 
 educational_quals = get_education(test_text)
 print(educational_quals)
