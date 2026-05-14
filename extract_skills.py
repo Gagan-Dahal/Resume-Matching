@@ -8,22 +8,26 @@ nlp = spacy.load("en_core_web_lg")
 
 skill_extractor = SkillExtractor(nlp, SKILL_DB, PhraseMatcher)
 
-sections = {}
-with open("demo.json", "r") as fp:
-    sections = json.load(fp)
 
-annotations = skill_extractor.annotate(sections['skills'])
-def get_skills(annotations):
-    skills = set()
+def get_skills_and_type(skills_text:str)->list:
+    annotations = skill_extractor.annotate(skills_text)
+    skills = {}
 
     for match in annotations["results"]["full_matches"]:
-        skills.add(match["doc_node_value"].lower())
+        skills[match["doc_node_value"]] = SKILL_DB[match["skill_id"]]["skill_type"]
 
     for match in annotations["results"]["ngram_scored"]:
-        if match["score"] >= 0.8:
-            skills.add(match["doc_node_value"].lower())
-
+        skill_difficulty = SKILL_DB[match["skill_id"]]["skill_type"]
+        threshold = 0.8 if skill_difficulty == "Hard Skill" else 0.5
+        if match["score"] > threshold:
+            skills[match["doc_node_value"]] = SKILL_DB[match["skill_id"]]["skill_type"]
+    
     return skills
 
-skills = get_skills(annotations)
-print("Skills found:", skills)
+with open("test.json", "r") as fp:
+    sectioned_database = json.load(fp)
+
+demo_text = sectioned_database["skills"]
+
+skills = get_skills_and_type(demo_text)
+print(skills)
