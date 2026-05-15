@@ -23,7 +23,7 @@ def extract_text_from_pdf(pdf_path):
     return "\n".join(full_text)
 
 
-text = extract_text_from_pdf("11.pdf").replace("\u2013", "-").replace("\u2014", "-")
+text = extract_text_from_pdf("demo_resources/jd2.pdf").replace("\u2013", "-").replace("\u2014", "-")
 
 with open("test.txt", "w") as fp:
     fp.write(text)
