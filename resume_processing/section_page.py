@@ -15,7 +15,7 @@ section_regex = re.compile(r"^\s*(" + "|".join(headers) + r")\s*:?\s*$", re.IGNO
 
 test_text = ""
 
-with open("test.txt", "r") as fp:
+with open("../test.txt", "r") as fp:
     test_text = fp.read()
 
 sectioned_text = {}
@@ -36,6 +36,6 @@ for index, match in enumerate(matches):
 
 # print(sectioned_text)
 
-with open("demo.json", "w") as fp:
+with open("../demo.json", "w") as fp:
 
     json.dump(sectioned_text, fp, indent=4)
