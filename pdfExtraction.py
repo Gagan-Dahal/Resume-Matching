@@ -22,8 +22,26 @@ def extract_text_from_pdf(pdf_path):
 
     return "\n".join(full_text)
 
+REPLACEMENTS = {
+    "\u2013": "-",
+    "\u2014": "-",
+    "\u2018": "'",
+    "\u2019": "'",
+    "\u201c": '"',
+    "\u201d": '"',
+    "\u2026": "...",
+    "\u00a0": " ",
+    "\u200b": "",
+    "\ufeff": "",
+    "\u2022": "*",
+    "\u2212": "-",
+    "\xad": "",
+}
 
-text = extract_text_from_pdf("demo_resources/jd2.pdf").replace("\u2013", "-").replace("\u2014", "-")
+text = extract_text_from_pdf("demo_resources/jd2.pdf")
+
+for unicode, equivalent in REPLACEMENTS.items():
+    text = text.replace(unicode, equivalent)
 
 with open("test.txt", "w") as fp:
     fp.write(text)
