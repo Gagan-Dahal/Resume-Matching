@@ -9,7 +9,7 @@ nlp = spacy.load("en_core_web_lg")
 skill_extractor = SkillExtractor(nlp, SKILL_DB, PhraseMatcher)
 
 
-def get_skills_and_type(skills_text:str)->list:
+def get_skills_and_type(skills_text:str)->dict:
     annotations = skill_extractor.annotate(skills_text)
     skills = {}
 
@@ -24,10 +24,11 @@ def get_skills_and_type(skills_text:str)->list:
     
     return skills
 
-with open("../demo.json", "r") as fp:
-    sectioned_database = json.load(fp)
+if __name__ == "__main__":
+    with open("demo.json", "r") as fp:
+        sectioned_database = json.load(fp)
 
-demo_text = sectioned_database["skills"]
+    demo_text = sectioned_database["skills"]
 
-skills = get_skills_and_type(demo_text)
-print(skills)
+    skills = get_skills_and_type(demo_text)
+    print(skills)

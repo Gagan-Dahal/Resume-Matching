@@ -28,10 +28,11 @@ def get_education(education_text:str)->list:
 
 # test_text = "Bachelor's degree in Computer Engineering, 2018, Master's degree in Data Science, 2021, PHD. in Cyberbio Engineering for Simulation of Human Neural Network\nBachelors in Business Studies, mba, b.tech in biomechanical engineering\nbachelors, data science\np.h.d., memory systems\nB.S & Masters: Computer Applications"
 
-with open("../demo.json", "r") as fp:
-    sectioned_database = json.load(fp)
+if __name__ == "__main__":
+    with open("demo.json", "r") as fp:
+        sectioned_database = json.load(fp)
 
-test_text = sectioned_database["education"]
+    test_text = sectioned_database["education"]
 
-educational_quals = get_education(test_text)
-print(educational_quals)
+    educational_quals = get_education(test_text)
+    print(educational_quals)

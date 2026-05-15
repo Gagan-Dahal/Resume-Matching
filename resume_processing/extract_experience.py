@@ -1,4 +1,3 @@
-import spacy
 import json
 import re
 from dateutil import parser
@@ -104,13 +103,13 @@ def extract_experience(experience_text):
         finds = re.findall(string = experience_text, pattern = conj_pat)
         return calculate_experience(finds)
 
+if __name__ == "__main__":
+    with open("demo.json", "r") as fp:
+        sectioned_database = json.load(fp)
 
-with open("../demo.json", "r") as fp:
-    sectioned_database = json.load(fp)
-
-demo_text = sectioned_database["experience"]
-# print(demo_text)
-print(extract_experience(demo_text))
+    demo_text = sectioned_database["experience"]
+    # print(demo_text)
+    print(extract_experience(demo_text))
 
 
 # print(calculate_experience(finds))
