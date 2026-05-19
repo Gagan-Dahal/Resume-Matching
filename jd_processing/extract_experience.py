@@ -4,8 +4,8 @@ import json
 experience_pattern = r"(\d{1,2}|\d{1,2}[ \t]*(?:to|\-)[ \t]*\d{1,2})\+?[ \t]+(?:year[s]?)[ \t]*(?:of[ \t]+experience|experience)?"
 experience_regex = re.compile(experience_pattern, re.IGNORECASE)
 
-def extract_jd_experience(experience_text:str)->tuple:
-    """Takes raw text containing experience and outputs a tuple (minimum, preferred)
+def extract_jd_experience(experience_text:str)->list:
+    """Takes raw text containing experience and outputs a list [minimum, preferred]
     where minimum is the minimum experience required and preferred is the preferred minimum"""
     matches = experience_regex.finditer(experience_text)
     minimum = 0
@@ -19,7 +19,7 @@ def extract_jd_experience(experience_text:str)->tuple:
         else:
             minimum += int(match)
             preferred += int(match)
-    return minimum, preferred
+    return [minimum, preferred]
 
 
 if __name__ == "__main__":
